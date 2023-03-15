@@ -1,37 +1,64 @@
-# _{Application Name}_
+# Video Store Revived!
 
-#### By _**{List of contributors}**_
-
-#### _{Brief description of application}_
+#### By: Owen Brown, Brishna Bakshev, Sarah Andyshak, Asia Kaplanyan.
 
 ## Technologies Used
 
-* _List all_
-* _the major technologies_
-* _you used in your project_
-* _here_
+* C#
+* Razor HTML
+* VS Code
+* .Net 6
+* MySQL
+* Entity Framework Core 6
+* CSS
 
 ## Description
+A website for renting out Blu-Ray movies. Users can add, edit, and delete movies from the database.
 
-_{This is a detailed description of your application. Give as much detail as needed to explain what the application does as well as any other information you want users or other developers to have.}_
+### Setup Instructions
 
-## Setup/Installation Requirements
+#### You Will Need: 
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+* A code editor, such as [VS Code](https://code.visualstudio.com/)
+* [Git](https://github.com/) installed
+* [Install .Net 6 SDK:](https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-c-and-net)
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this application depends on? We recommend deleting the project from your desktop, re-cloning the project from GitHub, and writing down all the steps necessary to get the project working again.}_
+
+#### Preliminary Project Set-up:
+1. Clone or download this repository to your machine.
+2. Navigate to the local directory (YourPath/ProjectName.Solution/ProjectName) and create a new file "appsettings.json".
+3. Open the file in VS Code and add:
+  ```
+  {
+    "ConnectionStrings": {
+      "DefaultConnection": "Server=localhost;Port=3306;database=[YOUR-DB-NAME];uid=[YOUR-USER-HERE];pwd=[YOUR-PASSWORD-HERE];"
+    }
+  }
+  ```
+
+**IMPORTANT:** Be sure to replace your username, password, and name of your database for the fields [YOUR-USER-HERE], [YOUR-PASSWORD-HERE], AND [YOUR-DB-NAME].
+
+#### Database Migration Set-up:
+1. In the root directory, run `dotnet tool install --global dotnet-ef --version 6.0.0`.
+2. Navigate to the production directory and run `dotnet add package Microsoft.EntityFrameworkCore.Design -v 6.0.0`.
+3. Run `dotnet ef migrations add Initial` to create the initial migration.
+4. Update the database with `dotnet ef database update`.
+
+#### Running the Project:
+1. Create a .gitignore file and add "appsettings.json", "bin", and "obj" to the ignored file list.  
+2. Open your shell (e.g., Terminal or GitBash) and add your .gitignore file and commit it before adding any other files. 
+3. Navigate to this project's production directory called "MovieRental". 
+4. In the command line, run the command `dotnet run` to compile and execute the console application. Optionally, you can run `dotnet build` to compile this console app without running it.
+5. Run `dotnet watch run` in the command line to start the project in development mode with a watcher.
+6. Open the browser to _https://localhost:5001_. If you cannot access localhost:5001 it is likely because you have not configured a .NET developer security certificate for HTTPS. To learn about this, review this lesson: [Redirecting to HTTPS and Issuing a Security Certificate](https://www.learnhowtoprogram.com/c-and-net/basic-web-applications/redirecting-to-https-and-issuing-a-security-certificate).
 
 ## Known Bugs
 
-* _Any known issues_
-* _should go here_
+No known bugs. Tests are not configured for the current format of this project.
 
 ## License
+Enjoy the site! If you have questions or suggestions for fixing the code, please contact me!
 
-_{Let people know what to do if they run into any issues or have questions, ideas or concerns.  Encourage them to contact you or make a contribution to the code.}_
+[MIT](https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt)
 
-Copyright (c) _date_ _author name(s)_
+Copyright (c) 2023 Owen Brown, Brishna Bakshev, Sarah Andyshak, Asia Kaplanyan.
