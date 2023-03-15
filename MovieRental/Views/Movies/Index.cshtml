@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using MovieRental.Models;
+
+<h1>Movies</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No movies have been added yet!</h3>
+} 
+
+@foreach (Movie movie in Model)
+{
+  <li>@Html.ActionLink($"{movie.Title}", "Details", new { id = movie.MovieId })</li>
+}
+
+<br>
+<div id="nav-links">
+  <p>@Html.ActionLink("Add New Movie", "Create")</p>
+</div>

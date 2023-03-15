@@ -1,0 +1,38 @@
+@{
+  Layout = "_Layout";
+}
+<div class="jumbotron text-center">
+  <h1 class="display-4">Welcome to Blockbuster Video!</h1>
+  <hr>
+</div>
+
+@using MovieRental.Models;
+
+<h4>Movies</h4>
+@if (Model["movies"].Length == 0)
+{
+  <p>No movies have been added yet!</p>
+} 
+<ul>
+  @foreach (Movie movie in Model["movies"])
+  {
+    <li>@Html.ActionLink(@movie.Title, "Details", "Movies", new { id = @movie.MovieId})</li>
+  }
+</ul>
+
+<h4>Customers</h4>
+@if (Model["customers"].Length == 0)
+{
+  <p>No customers have been added yet!</p>
+} 
+<ul>
+  @foreach (Customer customer in Model["customers"])
+  {
+    <li>@Html.ActionLink(@customer.Name, "Details", "Customers", new { id = @customer.CustomerId})</li>
+  }
+</ul>
+
+<hr>
+
+<p>@Html.ActionLink("Manage movies", "Index", "Movies")</p> 
+<p>@Html.ActionLink("Manage customers", "Index", "Customers")</p>

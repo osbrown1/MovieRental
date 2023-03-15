@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@model MovieRental.Models.Movie
+
+<h2>Edit</h2>
+
+<h4>Edit this movie's information: @Html.DisplayFor(model => model.Title)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.MovieId)
+
+    @Html.LabelFor(model => model.Title)
+    @Html.EditorFor(model => model.Title)
+
+    @Html.LabelFor(model => model.Genre)
+    @Html.TextBoxFor(model => model.Genre)
+
+    @Html.LabelFor(model => model.NumberInStock)
+    @Html.TextBoxFor(model => model.NumberInStock)
+
+    <input type="submit" value="Save" />
+}
+
+<br>
+<div id="nav-links">
+  <p>@Html.ActionLink("Back to List of Movies", "Index")</p>
+</div>

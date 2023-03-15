@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model MovieRental.Models.Movie
+
+<h2>Add a Customer</h2>
+
+<h4>Add a customer to rent out this movie: @Html.DisplayFor(model => model.Title)</h4>
+<!-- model.Name may need to be model.Title -->
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.MovieId)
+
+    @Html.Label("Select Customer")
+    @Html.DropDownList("CustomerId")
+
+    <input type="submit" value="Save" />
+}
+
+<br>
+<div id="nav-links">
+  <p>@Html.ActionLink("Back to List of Movies", "Index")</p>
+</div>

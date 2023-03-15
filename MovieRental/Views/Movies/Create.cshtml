@@ -1,0 +1,29 @@
+@{
+  Layout = "_Layout";
+}
+
+@model MovieRental.Models.Movie
+
+<h4>Add a new Movie</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Title)
+    @Html.TextBoxFor(model => model.Title)
+
+    @Html.LabelFor(model => model.Genre)
+    @Html.TextBoxFor(model => model.Genre)
+
+    @Html.LabelFor(model => model.NumberInStock)
+    @Html.TextBoxFor(model => model.NumberInStock)
+    
+    @Html.Label("Add a customer")
+    @Html.DropDownList("CustomerId")
+
+    <input type="submit" value="Add new Movie" class="btn btn-default" />
+}
+
+<br>
+<div id="nav-links">
+  <p>@Html.ActionLink("Back to List of Movies", "Index")</p>
+</div>

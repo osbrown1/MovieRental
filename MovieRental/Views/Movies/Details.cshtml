@@ -1,0 +1,38 @@
+@{
+  Layout = "_Layout";
+}
+
+@using MovieRental.Models
+@model MovieRental.Models.Movie
+
+<h2>Movie Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</h3>
+<h3>@Html.DisplayNameFor(model => model.Genre): @Html.DisplayFor(model => model.Genre)</h3>
+<h3>@Html.DisplayNameFor(model => model.NumberInStock): @Html.DisplayFor(model => model.NumberInStock)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This movie is not currently rented to any customers</p>
+}
+else
+{
+  <h4>Customers who have rented this movie:</h4>
+  <ul>
+  @foreach(CustomerMovie join in Model.JoinEntities)
+  {
+    <li>@join.Customer.Name</li>
+    @using (Html.BeginForm("DeleteJoin", "Movies"))
+    {
+      @Html.Hidden("joinId", @join.CustomerMovieId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
+}
+
+<br>
+<div id="nav-links">
+  <p>@Html.ActionLink("Edit Movie", "Edit", new { id = Model.MovieId }) | @Html.ActionLink("Delete Movie", "Delete", new { id = Model.MovieId }) | @Html.ActionLink("Add a Customer", "AddCustomer", new { id = Model.MovieId })</p>
+  <p>@Html.ActionLink("Back to List of Movies", "Index")</p>
+</div>
